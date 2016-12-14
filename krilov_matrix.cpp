@@ -140,7 +140,7 @@ int main (int argc, const char * argv[])
     int ni, nj, i, j;
   
     //Открываем файл для чтения исходных данных
-    file = fopen("/home/grom/.krilov_conf", "r");
+    file = fopen(".krilov_conf", "r");
   
     //Считываем из файла размерность массивов Ni x Nj
     fscanf(file, "%d", &ni); 
@@ -148,25 +148,25 @@ int main (int argc, const char * argv[])
 
     //Создаем динамические массивы
     A = new float*[ni]; 
-    B = new float*[ni]; 
-    C = new float*[ni];
+    // B = new float*[ni]; 
+    // C = new float*[ni];
  
     for (int i=0; i<ni; i++) 
     { 
         A[i] = new float[nj]; 
-        B[i] = new float[nj]; 
-        C[i] = new float[nj];
-    };
+        // B[i] = new float[nj]; 
+        // C[i] = new float[nj];
+    }
     
-    //Считываем массив B:
+    //Считываем массив A:
     for (i=0; i<ni; i++)
         for (j=0; j<nj; j++)
-            fscanf(file, "%f ", &B[i][j]);
+            fscanf(file, "%f ", &A[i][j]);
     
-    //Считываем массив C:
-    for (i=0; i<ni; i++)
-        for (j=0; j<nj; j++)
-            fscanf(file, "%f ", &C[i][j]);
+    // //Считываем массив C:
+    // for (i=0; i<ni; i++)
+    //     for (j=0; j<nj; j++)
+    //         fscanf(file, "%f ", &C[i][j]);
   
     //Считываем число k:
     fscanf(file, "%f", &kf);
@@ -175,10 +175,10 @@ int main (int argc, const char * argv[])
     fscanf(file, "%f", &eps);
     fclose(file);
 
-    //Формируем массив A, с которым будем работать (A = B + kC):
-    for (i=0; i<ni; i++)
-        for (j=0; j<nj; j++)
-            A[i][j] = B[i][j] + kf*C[i][j];
+    // //Формируем массив A, с которым будем работать (A = B + kC):
+    // for (i=0; i<ni; i++)
+    //     for (j=0; j<nj; j++)
+    //         A[i][j] = B[i][j] + kf*C[i][j];
 
     std::cout << "Исходная матрица A:\n";
     dispArr(A, ni, nj, "%5.2f ");
