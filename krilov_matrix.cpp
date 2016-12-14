@@ -18,7 +18,7 @@ float urTest4 (float a, float b, float *P);
 float** arrMult (float **Arr, float **ArrO, int m, int n, int q) 
 {
     float **MultArr;
-  
+
     //Динамически создаем матрицу - результат произведения
     MultArr = new float*[m];
     for (int i=0; i<m; i++) 
@@ -189,9 +189,10 @@ int main (int argc, const char * argv[])
     for (int i=0; i<ni; i++) 
 	mC[i] = new float[ni+1];
  
-    //В этом массиве за C(0) примем (1, 1, 1, 1)
+    //В этом массиве за C(0) примем (1, 0, 0, 0)
     for (int i=0; i<ni; i++) 
-	mC[i][0] = 1;
+	mC[i][0] = 0;
+    mC[0][0] = 1;
 
     //Создадим массив c0, который будет хранить текущее значение C(1), C(2), C(3), C(4)
     c0 = new float*[ni];
